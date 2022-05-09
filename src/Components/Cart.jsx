@@ -21,6 +21,7 @@ export default function Cart({ open, setOpen, cart, updateCart }) {
             leave="ease-in-out duration-500"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
+            onClick={() => setOpen(false)}
           >
             <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
@@ -55,7 +56,9 @@ export default function Cart({ open, setOpen, cart, updateCart }) {
                     <div className="mt-8">
                       <div className="flow-root">
                         <ul role="list" className="-my-6 divide-y divide-gray-200">
-                          {cart.map((product) => (
+                          {cart.length == 0 ? 
+                          <h1>Your cart is empty</h1>
+                          : cart.map((product) => (
                             <li key={product.id} className="flex py-6">
                               <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                 <img
